@@ -1,0 +1,708 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "### Element swc-avatar-uploader\n\nA basic component to upload and show an avatar image\n\n```html\n  <swc-avatar-uploader id=\"avatar\" avatar-label=\"Photo\"\n    avatar-image-alt=\"Photo\"></swc-avatar-uploader>\n```\n\n### Styling\n\n`<swc-avatar-uploader>` provides the following custom properties and mixins for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--swc-avatar-uploader-avatar-wrapper-bgcolor` | Var applied to set avatar background color | #FFFFFF\n`--swc-avatar-uploader-avatar-wrapper-bshadow` | Var applied to set avatar box-shadow | {0 0 1px 0 rgba(0, 0, 0, .08), 0 1px 2px 0 rgba(0, 0, 0, .15)}\n`--swc-avatar-uploader-avatar-focus-bordercolor` | Var applied to set avatar focus border color | #3D7389 \n`--swc-avatar-uploader-avatar-wrapper-avatar-action` | Mixin applied to the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-hover` | Mixin applied to the hover state of the main button and dropping zone | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-icon` | Mixin applied to the icon within the main button and dropping zone | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot` | Mixin applied to the footer | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-span` | Mixin applied to the label of the footer | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-icon` | Mixin applied to the icon of the footer | {}\n`--swc-avatar-uploader-avatar-footer-bgcolor` | Var applied to set avatar footer background color | #EEEEEE\n\n`swc-avatar-uploader`\nA component to upload and show an avatar image",
+      "summary": "",
+      "path": "swc-avatar-uploader.html",
+      "properties": [
+        {
+          "name": "_avatarLoaded",
+          "type": "boolean | null | undefined",
+          "description": "Avatar is correctly loaded.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 187,
+              "column": 10
+            },
+            "end": {
+              "line": 190,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "avatarLabel",
+          "type": "string | null | undefined",
+          "description": "Avatar footer label.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 194,
+              "column": 10
+            },
+            "end": {
+              "line": 197,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "avatarImage",
+          "type": "string | null | undefined",
+          "description": "Avatar image content (base64).",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 201,
+              "column": 10
+            },
+            "end": {
+              "line": 206,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_avatarChanged\"",
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "avatarImageAlt",
+          "type": "string | null | undefined",
+          "description": "Avatar alt image info.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 210,
+              "column": 10
+            },
+            "end": {
+              "line": 213,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "avatarDropIcon",
+          "type": "string | null | undefined",
+          "description": "Avatar icon within the drop area.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 217,
+              "column": 10
+            },
+            "end": {
+              "line": 220,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"icons:cloud-upload\""
+        },
+        {
+          "name": "avatarAcceptedFileTypes",
+          "type": "string | null | undefined",
+          "description": "Avatar string list of accepted file types.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 224,
+              "column": 10
+            },
+            "end": {
+              "line": 227,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"image/gif,image/jpeg,image/png\""
+        },
+        {
+          "name": "avatarAddIcon",
+          "type": "string | null | undefined",
+          "description": "Avatar plus icon within the footer area.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 231,
+              "column": 10
+            },
+            "end": {
+              "line": 234,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"icons:add\""
+        },
+        {
+          "name": "avatarRemoveIcon",
+          "type": "string | null | undefined",
+          "description": "Avatar remove icon within the footer area.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 238,
+              "column": 10
+            },
+            "end": {
+              "line": 241,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"icons:close\""
+        },
+        {
+          "name": "avatarMaxFileSize",
+          "type": "number | null | undefined",
+          "description": "Avatar max file size.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 245,
+              "column": 10
+            },
+            "end": {
+              "line": 248,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "defaultValue": "2097152"
+        }
+      ],
+      "methods": [
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 252,
+              "column": 6
+            },
+            "end": {
+              "line": 272,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_imageLoaded",
+          "description": "Executed when iron-image `loaded-changed` event is fired.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 279,
+              "column": 6
+            },
+            "end": {
+              "line": 285,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_imageError",
+          "description": "Executed when iron-image `loaded-error` event is fired\nor occurs an error while reading image.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 293,
+              "column": 6
+            },
+            "end": {
+              "line": 300,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_avatarChanged",
+          "description": "Fired when `avatarImage` changes its value.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 307,
+              "column": 6
+            },
+            "end": {
+              "line": 317,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "val",
+              "type": "Boolean",
+              "description": "Value changed."
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_getIcon",
+          "description": "Fired when `_avatarLoaded` changes its value and set the footer iron-icon.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 325,
+              "column": 6
+            },
+            "end": {
+              "line": 327,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "val",
+              "type": "Boolean",
+              "description": "Value changed."
+            }
+          ],
+          "return": {
+            "type": "String",
+            "desc": "Icon."
+          }
+        },
+        {
+          "name": "_includeAvatar",
+          "description": "Fired when `avatar-action` is clicked.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 332,
+              "column": 6
+            },
+            "end": {
+              "line": 334,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_resetAvatar",
+          "description": "Fired when `avatar-foot` is clicked.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 339,
+              "column": 6
+            },
+            "end": {
+              "line": 343,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_dragInOut",
+          "description": "Executed when avatar-action `dragenter/dragleave` event is fired.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 348,
+              "column": 6
+            },
+            "end": {
+              "line": 355,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_fileDrop",
+          "description": "Executed when avatar-action `drop` event is fired.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 362,
+              "column": 6
+            },
+            "end": {
+              "line": 366,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "evt",
+              "type": "Object",
+              "description": "Event data."
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_fileUpload",
+          "description": "Executed when file-input `change` event is fired.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 373,
+              "column": 6
+            },
+            "end": {
+              "line": 376,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "evt",
+              "type": "Object",
+              "description": "Event data."
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_pasteFile",
+          "description": "Executed when window `paste` event is fired.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 383,
+              "column": 6
+            },
+            "end": {
+              "line": 408,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "evt",
+              "type": "Object",
+              "description": "Event data."
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_loadFile",
+          "description": "Manage, read and save file information in `avatarImage` property.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 416,
+              "column": 6
+            },
+            "end": {
+              "line": 448,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "files",
+              "type": "Array",
+              "description": "List of files."
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 179,
+          "column": 4
+        },
+        "end": {
+          "line": 450,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "SwcAvatarUploader",
+      "attributes": [
+        {
+          "name": "avatar-label",
+          "description": "Avatar footer label.",
+          "sourceRange": {
+            "start": {
+              "line": 194,
+              "column": 10
+            },
+            "end": {
+              "line": 197,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "avatar-image",
+          "description": "Avatar image content (base64).",
+          "sourceRange": {
+            "start": {
+              "line": 201,
+              "column": 10
+            },
+            "end": {
+              "line": 206,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "avatar-image-alt",
+          "description": "Avatar alt image info.",
+          "sourceRange": {
+            "start": {
+              "line": 210,
+              "column": 10
+            },
+            "end": {
+              "line": 213,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "avatar-drop-icon",
+          "description": "Avatar icon within the drop area.",
+          "sourceRange": {
+            "start": {
+              "line": 217,
+              "column": 10
+            },
+            "end": {
+              "line": 220,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "avatar-accepted-file-types",
+          "description": "Avatar string list of accepted file types.",
+          "sourceRange": {
+            "start": {
+              "line": 224,
+              "column": 10
+            },
+            "end": {
+              "line": 227,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "avatar-add-icon",
+          "description": "Avatar plus icon within the footer area.",
+          "sourceRange": {
+            "start": {
+              "line": 231,
+              "column": 10
+            },
+            "end": {
+              "line": 234,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "avatar-remove-icon",
+          "description": "Avatar remove icon within the footer area.",
+          "sourceRange": {
+            "start": {
+              "line": 238,
+              "column": 10
+            },
+            "end": {
+              "line": 241,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "avatar-max-file-size",
+          "description": "Avatar max file size.",
+          "sourceRange": {
+            "start": {
+              "line": 245,
+              "column": 10
+            },
+            "end": {
+              "line": 248,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "load-completed",
+          "description": "Executed when iron-image `loaded-changed` event is fired.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "load-error",
+          "description": "Executed when iron-image `loaded-error` event is fired\nor occurs an error while reading image.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "load-init",
+          "description": "Manage, read and save file information in `avatarImage` property.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "avatar-image-changed",
+          "description": "Fired when the `avatarImage` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "swc-avatar-uploader"
+    },
+    {
+      "description": "`swc-avatar-uploader`\nA component to upload and show an avatar image",
+      "summary": "",
+      "path": "swc-avatar-uploader.html",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 179,
+          "column": 37
+        },
+        "end": {
+          "line": 179,
+          "column": 70
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    }
+  ]
+}
