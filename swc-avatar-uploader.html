@@ -1,0 +1,454 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<!--
+### Element swc-avatar-uploader
+
+A basic component to upload and show an avatar image
+
+```html
+  <swc-avatar-uploader id="avatar" avatar-label="Photo"
+    avatar-image-alt="Photo"></swc-avatar-uploader>
+```
+
+### Styling
+
+`<swc-avatar-uploader>` provides the following custom properties and mixins for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--swc-avatar-uploader-avatar-wrapper-bgcolor` | Var applied to set avatar background color | #FFFFFF
+`--swc-avatar-uploader-avatar-wrapper-bshadow` | Var applied to set avatar box-shadow | {0 0 1px 0 rgba(0, 0, 0, .08), 0 1px 2px 0 rgba(0, 0, 0, .15)}
+`--swc-avatar-uploader-avatar-focus-bordercolor` | Var applied to set avatar focus border color | #3d7389 
+`--swc-avatar-uploader-avatar-wrapper-avatar-action` | Mixin applied to the main button and drop area | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-action-hover` | Mixin applied to the hover state of the main button and dropping zone | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-action-icon` | Mixin applied to the icon within the main button and dropping zone | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-foot` | Mixin applied to the footer | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-foot-span` | Mixin applied to the label of the footer | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-foot-icon` | Mixin applied to the icon of the footer | {}
+
+-->
+
+<dom-module id="swc-avatar-uploader">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      #avatar-action:focus,
+      .avatar-foot:focus {
+        outline-style: none;
+        box-shadow: none;
+        border: 2px solid var(--swc-avatar-uploader-avatar-focus-bordercolor, #3d7389);
+      }
+
+      #avatar-wrapper {
+        background-color: var(--swc-avatar-uploader-avatar-wrapper-bgcolor, #FFF);
+        box-shadow: var(--swc-avatar-uploader-avatar-wrapper-bshadow, 0 0 1px 0 rgba(0, 0, 0, .08), 0 1px 2px 0 rgba(0, 0, 0, .15));
+        display: flex;
+        flex-flow: column nowrap;
+        height: 100%;
+        box-sizing: content-box;
+        position: relative;
+      }
+
+      #avatar-image {
+        flex: 1;
+        --iron-image-placeholder: {
+          background-color: var(--swc-avatar-uploader-avatar-wrapper-bgcolor, #FFF);
+        }
+        ;
+      }
+
+      #avatar-action {
+        background-color: transparent;
+        display: flex;
+      }
+
+      #avatar-action:hover {
+        cursor: pointer;
+      }
+
+      #avatar-action,
+      #avatar-action div {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      #avatar-action div {
+        background-color: #9e9e9e;
+        color: #FFF;
+        transition: .2s ease-in-out;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @apply --swc-avatar-uploader-avatar-wrapper-avatar-action;
+      }
+
+      #avatar-action:hover div,
+      #avatar-action.dropped div {
+        transform: scaleX(.94) scaleY(.94);
+        opacity: .15;
+
+        @apply --swc-avatar-uploader-avatar-wrapper-avatar-action-hover;
+      }
+
+      #avatar-action div iron-icon {
+        transform: scaleX(3) scaleY(3);
+
+        @apply --swc-avatar-uploader-avatar-wrapper-avatar-action-icon;
+      }
+
+      .avatar-foot {
+        background-color: #EEE;
+        box-sizing: border-box;
+        border: 2px solid #EEE;
+        padding: 8px;
+        font-size: 20px;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        color: #212121;
+
+        @apply --swc-avatar-uploader-avatar-wrapper-avatar-foot;
+      }
+
+      .avatar-foot.avatar-foot-to-top {
+        cursor: pointer;
+        z-index: 1;
+      }
+
+      .avatar-foot span {
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        @apply --swc-avatar-uploader-avatar-wrapper-avatar-foot-span;
+      }
+
+      .avatar-foot .icon {
+        @apply --swc-avatar-uploader-avatar-wrapper-avatar-foot-icon;
+      }
+
+      #file-input {
+        display: none;
+      }
+    </style>
+
+    <div id="avatar-wrapper">
+      <iron-image id="avatar-image" alt="[[avatarImageAlt]]"
+        fade preload position="center" sizing="cover"
+        src$="[[avatarImage]]"></iron-image>
+
+      <div class="avatar-foot" on-click="_resetAvatar">
+        <span>[[avatarLabel]]</span>
+        <iron-icon id="icon" class="icon" icon$="[[_getIcon(_avatarLoaded)]]"></iron-icon>
+      </div>
+
+      <input type="file" id="file-input" accept="[[avatarAcceptedFileTypes]]"
+      />
+
+      <div id="avatar-action" on-click="_includeAvatar"
+        tabindex="0">
+        <div>
+          <iron-icon icon="[[avatarDropIcon]]"></iron-icon>
+        </div>
+      </div>
+    </div>
+
+  </template>
+
+  <script>
+    /**
+     * `swc-avatar-uploader`
+     * A component to upload and show an avatar image
+     *
+     * @customElement
+     * @polymer
+     * @extends {Polymer.Element}
+     * @demo demo/index.html
+     */
+    class SwcAvatarUploader extends (class extends Polymer.Element { }) {
+      static get is() { return 'swc-avatar-uploader'; }
+
+      static get properties() {
+        return {
+          /**
+          * Avatar is correctly loaded.
+          */
+          _avatarLoaded: {
+            type: Boolean,
+            value: false
+          },
+          /**
+          * Avatar footer label.
+          */
+          avatarLabel: {
+            type: String,
+            value: ''
+          },
+          /**
+          * Avatar image content (base64).
+          */
+          avatarImage: {
+            type: String,
+            value: '',
+            observer: '_avatarChanged',
+            notify: true
+          },
+          /**
+          * Avatar alt image info.
+          */
+          avatarImageAlt: {
+            type: String,
+            value: ''
+          },
+          /**
+          * Avatar icon within the drop area.
+          */
+          avatarDropIcon: {
+            type: String,
+            value: 'icons:cloud-upload'
+          },
+          /**
+          * Avatar string list of accepted file types.
+          */
+          avatarAcceptedFileTypes: {
+            type: String,
+            value: 'image/gif,image/jpeg,image/png'
+          },
+          /**
+          * Avatar plus icon within the footer area.
+          */
+          avatarAddIcon: {
+            type: String,
+            value: 'icons:add'
+          },
+          /**
+          * Avatar remove icon within the footer area.
+          */
+          avatarRemoveIcon: {
+            type: String,
+            value: 'icons:close'
+          },
+          /**
+          * Avatar max file size.
+          */
+          avatarMaxFileSize: {
+            type: Number,
+            value: 2097152
+          }
+        };
+      }
+
+      ready() {
+        super.ready();
+
+        this.shadowRoot.querySelector('#avatar-image').addEventListener('loaded-changed',
+          this._imageLoaded.bind(this), false);
+        this.shadowRoot.querySelector('#avatar-image').addEventListener('error-changed',
+          this._imageError.bind(this), false);
+
+        var dropTarget = this.shadowRoot.querySelector('#avatar-action');
+        dropTarget.addEventListener('dragover', (evt) => {
+          evt.preventDefault(); return false;
+        }, false);
+        dropTarget.addEventListener('dragenter', this._dragInOut.bind(this), false);
+        dropTarget.addEventListener('dragleave', this._dragInOut.bind(this), false);
+        dropTarget.addEventListener('drop', this._fileDrop.bind(this), false);
+
+        window.addEventListener('paste', this._pasteFile.bind(this), false);
+
+        this.shadowRoot.querySelector('#file-input').addEventListener('change',
+          this._fileUpload.bind(this), false);
+      }
+
+      /**
+      * Executed when iron-image `loaded-changed` event is fired.
+        *
+        * @event load-completed
+        */
+      _imageLoaded() {
+        if (this.avatarImage !== '') {
+          this.dispatchEvent(new CustomEvent('load-completed', {
+            bubbles: true, composed: true
+          }));
+        }
+      }
+
+      /**
+      * Executed when iron-image `loaded-error` event is fired
+      * or occurs an error while reading image.
+        *
+        * @event load-error
+        */
+      _imageError() {
+        if (this.avatarImage !== '') {
+          this.avatarImage = '';
+          this.dispatchEvent(new CustomEvent('load-error', {
+            bubbles: true, composed: true
+          }));
+        }
+      }
+
+      /**
+      * Fired when `avatarImage` changes its value.
+      *
+      * @param {Boolean} val Value changed.
+      */
+      _avatarChanged(val) {
+        if (val) {
+          this._avatarLoaded = true;
+          this.shadowRoot.querySelector('.avatar-foot').setAttribute('tabindex', '0');
+          this.shadowRoot.querySelector('.avatar-foot').classList.add('avatar-foot-to-top');
+        } else {
+          this._avatarLoaded = false;
+          this.shadowRoot.querySelector('.avatar-foot').removeAttribute('tabindex');
+          this.shadowRoot.querySelector('.avatar-foot').classList.remove('avatar-foot-to-top');
+        }
+      }
+
+      /**
+      * Fired when `_avatarLoaded` changes its value and set the footer iron-icon.
+      *
+      * @param {Boolean} val Value changed.
+      * @return {String} Icon.
+      */
+      _getIcon(val) {
+        return val ? this.avatarRemoveIcon : this.avatarAddIcon;
+      }
+
+      /**
+      * Fired when `avatar-action` is clicked.
+      */
+      _includeAvatar() {
+        this.shadowRoot.querySelector('#file-input').click();
+      }
+
+      /**
+      * Fired when `avatar-foot` is clicked.
+      */
+      _resetAvatar() {
+        if (this._avatarLoaded) {
+          this.avatarImage = '';
+        }
+      }
+
+      /**
+      * Executed when avatar-action `dragenter/dragleave` event is fired.
+        */
+      _dragInOut() {
+        const elClass = this.shadowRoot.querySelector('#avatar-action').classList;
+        if (!elClass.contains('dropped')) {
+          elClass.add('dropped');
+        } else {
+          elClass.remove('dropped');
+        }
+      }
+
+      /**
+      * Executed when avatar-action `drop` event is fired.
+        *
+        * @param {Object} evt Event data.
+        */
+      _fileDrop(evt) {
+        evt.preventDefault();
+        this._loadFile(evt.dataTransfer.files);
+        this._dragInOut();
+      }
+
+      /**
+      * Executed when file-input `change` event is fired.
+        *
+        * @param {Object} evt Event data.
+        */
+      _fileUpload(evt) {
+        this._loadFile(evt.target.files);
+        this.shadowRoot.querySelector('#file-input').value = '';
+      }
+
+      /**
+      * Executed when window `paste` event is fired.
+        *
+        * @param {Object} evt Event data.
+        */
+      _pasteFile(evt) {
+        const shad = this.shadowRoot;
+        if (shad.querySelector('#avatar-action') === shad.querySelector(':focus')) {
+          if (evt.clipboardData == false) {
+            return;
+          }
+          const items = evt.clipboardData.items;
+          if (items === 'undefined') {
+            return;
+          }
+
+          let itemsRlt = [];
+          for (var ii = 0; ii < items.length; ii++) {
+            if (!items[ii].type.includes('image'))
+              continue;
+            const file = items[ii].getAsFile();
+            if (file !== null) {
+              itemsRlt.push(file);
+            }
+          }
+
+          if (itemsRlt.length > 0) {
+            this._loadFile(itemsRlt);
+          }
+        }
+      }
+
+      /**
+      * Manage, read and save file information in `avatarImage` property.
+        *
+        * @param {Array} files List of files.
+        * @event load-init
+        */
+      _loadFile(files) {
+        if (files.length > 1) {
+          return;
+          // TODO:Show error
+          // console.log('cantidad archivos');
+        }
+        if (files[0].type.trim() === ''
+          || !this.avatarAcceptedFileTypes.includes(files[0].type.trim())) {
+          return;
+          // TODO:Show error
+          // console.log('tipo incorrecto');
+        }
+        if (files[0].size > this.avatarMaxFileSize) {
+          return;
+          // TODO:Show error
+          // console.log('tamaño superador');
+        }
+
+        this.dispatchEvent(new CustomEvent('load-init', {
+          bubbles: true, composed: true
+        }));
+        this.avatarImage = '';
+        var reader = new FileReader();
+        reader.onload = (evt) => {
+          this.avatarImage = evt.target.result;
+        };
+        reader.onerror = () => {
+          // TODO:Show error reading
+          // console.log('error al leer archivo');
+
+          this._imageError();
+        };
+        reader.readAsDataURL(files[0]);
+      }
+
+    }
+
+    window.customElements.define(SwcAvatarUploader.is, SwcAvatarUploader);
+  </script>
+</dom-module>
