@@ -25,7 +25,7 @@ Custom property | Description | Default
 `--swc-avatar-uploader-avatar-wrapper-avatar-action-hover` | Mixin applied to the hover state of the main button and dropping zone | {}
 `--swc-avatar-uploader-avatar-wrapper-avatar-action-icon` | Mixin applied to the icon within the main button and dropping zone | {}
 `--swc-avatar-uploader-avatar-wrapper-avatar-foot` | Mixin applied to the footer | {}
-`--swc-avatar-uploader-avatar-wrapper-avatar-foot-span` | Mixin applied to the label of the footer | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-foot-label` | Mixin applied to the label of the footer | {}
 `--swc-avatar-uploader-avatar-wrapper-avatar-foot-icon` | Mixin applied to the icon of the footer | {}
 `--swc-avatar-uploader-avatar-footer-bgcolor` | Var applied to set avatar footer background color | #EEEEEE
 `--swc-avatar-uploader-avatar-wrapper-avatar-action-focus` | Mixin applied to the focus of the main button and drop area | {}
@@ -117,8 +117,8 @@ Custom property | Description | Default
 
       #avatar-action div {
         background-color: #9e9e9e;
-        color: #FFF;
-        transition: transform .2s;
+        color: var(--swc-avatar-uploader-avatar-footer-bgcolor, #EEE);
+        transition: transform .25s;
         opacity: 0;
         display: flex;
         justify-content: center;
@@ -129,14 +129,14 @@ Custom property | Description | Default
 
       #avatar-action:hover div,
       #avatar-action.dropped div {
-        transform: scaleX(.90) scaleY(.93);
+        transform: scale(.90, .93);
         opacity: .2;
 
         @apply --swc-avatar-uploader-avatar-wrapper-avatar-action-hover;
       }
 
       #avatar-action div iron-icon {
-        transform: scaleX(3) scaleY(3);
+        transform: scale(3, 3);
 
         @apply --swc-avatar-uploader-avatar-wrapper-avatar-action-icon;
       }
@@ -171,12 +171,12 @@ Custom property | Description | Default
         @apply --swc-avatar-uploader-avatar-wrapper-avatar-foot-focus;
       }
 
-      .avatar-foot span {
+      .avatar-foot .label {
         flex: 1;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        @apply --swc-avatar-uploader-avatar-wrapper-avatar-foot-span;
+        @apply --swc-avatar-uploader-avatar-wrapper-avatar-foot-label;
       }
 
       .avatar-foot .icon {
@@ -193,8 +193,9 @@ Custom property | Description | Default
         fade preload position="center" sizing="cover"
         src$="[[avatarImage]]"></iron-image>
 
-      <div class="avatar-foot" on-click="_resetAvatar">
-        <span>[[avatarLabel]]</span>
+      <div class="avatar-foot" on-click="_resetAvatar"
+        on-keypress="_resetAvatar">
+        <span class="label">[[avatarLabel]]</span>
         <iron-icon id="icon" class="icon" icon$="[[_getIcon(_avatarLoaded)]]"></iron-icon>
       </div>
 
@@ -202,9 +203,9 @@ Custom property | Description | Default
       />
 
       <div id="avatar-action" on-click="_includeAvatar"
-        tabindex="0">
+        on-keypress="_includeAvatar" tabindex="0">
         <div>
-          <iron-icon icon="[[avatarDropIcon]]"></iron-icon>
+          <iron-icon src="[[avatarDropIcon]]"></iron-icon>
         </div>
       </div>
     </div>
@@ -261,7 +262,7 @@ Custom property | Description | Default
           */
           avatarDropIcon: {
             type: String,
-            value: 'icons:cloud-upload'
+            value: '../resources/drop.svg'
           },
           /**
           * Avatar string list of accepted file types.
@@ -373,17 +374,29 @@ Custom property | Description | Default
 
       /**
       * Fired when `avatar-action` is clicked.
+      * 
+      * @param {Object} evt Event data.
       */
-      _includeAvatar() {
-        this.shadowRoot.querySelector('#file-input').click();
+      _includeAvatar(evt) {
+        if (((evt instanceof KeyboardEvent)
+          && (evt.keyCode === 13 || evt.keyCode === 32))
+          || !(evt instanceof KeyboardEvent)) {
+          this.shadowRoot.querySelector('#file-input').click();
+        }
       }
 
       /**
       * Fired when `avatar-foot` is clicked.
+      *
+      * @param {Object} evt Event data.
       */
-      _resetAvatar() {
+      _resetAvatar(evt) {
         if (this._avatarLoaded) {
-          this.avatarImage = '';
+          if (((evt instanceof KeyboardEvent)
+            && (evt.keyCode === 13 || evt.keyCode === 32))
+            || !(evt instanceof KeyboardEvent)) {
+            this.avatarImage = '';
+          }
         }
       }
 

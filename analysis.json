@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "### Element swc-avatar-uploader\n\nA basic component to upload and show an avatar image\n\n```html\n  <swc-avatar-uploader id=\"avatar\" avatar-label=\"Photo\"\n    avatar-image-alt=\"Photo\"></swc-avatar-uploader>\n```\n\n### Styling\n\n`<swc-avatar-uploader>` provides the following custom properties and mixins for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--swc-avatar-uploader-avatar-wrapper-bgcolor` | Var applied to set avatar background color | #FFFFFF\n`--swc-avatar-uploader-avatar-wrapper-bshadow` | Var applied to set avatar box-shadow | {0 0 1px 0 rgba(0, 0, 0, .08), 0 1px 2px 0 rgba(0, 0, 0, .15)}\n`--swc-avatar-uploader-avatar-focus-bordercolor` | Var applied to set avatar focus border color | #3D7389 \n`--swc-avatar-uploader-avatar-wrapper-avatar-action` | Mixin applied to the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-hover` | Mixin applied to the hover state of the main button and dropping zone | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-icon` | Mixin applied to the icon within the main button and dropping zone | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot` | Mixin applied to the footer | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-span` | Mixin applied to the label of the footer | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-icon` | Mixin applied to the icon of the footer | {}\n`--swc-avatar-uploader-avatar-footer-bgcolor` | Var applied to set avatar footer background color | #EEEEEE\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-focus` | Mixin applied to the focus of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-focus-ba` | Mixin applied to the befero/after focus styles of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-hover` | Mixin applied to the focus of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-focus` | Mixin applied to the focus of the main button and drop area | {}\n\n`swc-avatar-uploader`\nA component to upload and show an avatar image",
+      "description": "### Element swc-avatar-uploader\n\nA basic component to upload and show an avatar image\n\n```html\n  <swc-avatar-uploader id=\"avatar\" avatar-label=\"Photo\"\n    avatar-image-alt=\"Photo\"></swc-avatar-uploader>\n```\n\n### Styling\n\n`<swc-avatar-uploader>` provides the following custom properties and mixins for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--swc-avatar-uploader-avatar-wrapper-bgcolor` | Var applied to set avatar background color | #FFFFFF\n`--swc-avatar-uploader-avatar-wrapper-bshadow` | Var applied to set avatar box-shadow | {0 0 1px 0 rgba(0, 0, 0, .08), 0 1px 2px 0 rgba(0, 0, 0, .15)}\n`--swc-avatar-uploader-avatar-focus-bordercolor` | Var applied to set avatar focus border color | #3D7389 \n`--swc-avatar-uploader-avatar-wrapper-avatar-action` | Mixin applied to the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-hover` | Mixin applied to the hover state of the main button and dropping zone | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-icon` | Mixin applied to the icon within the main button and dropping zone | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot` | Mixin applied to the footer | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-label` | Mixin applied to the label of the footer | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-icon` | Mixin applied to the icon of the footer | {}\n`--swc-avatar-uploader-avatar-footer-bgcolor` | Var applied to set avatar footer background color | #EEEEEE\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-focus` | Mixin applied to the focus of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-focus-ba` | Mixin applied to the befero/after focus styles of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-hover` | Mixin applied to the focus of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-focus` | Mixin applied to the focus of the main button and drop area | {}\n\n`swc-avatar-uploader`\nA component to upload and show an avatar image",
       "summary": "",
       "path": "swc-avatar-uploader.html",
       "properties": [
@@ -13,11 +13,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 231,
+              "line": 232,
               "column": 10
             },
             "end": {
-              "line": 234,
+              "line": 235,
               "column": 11
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 238,
+              "line": 239,
               "column": 10
             },
             "end": {
-              "line": 241,
+              "line": 242,
               "column": 11
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 245,
+              "line": 246,
               "column": 10
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 11
             }
           },
@@ -81,11 +81,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 254,
+              "line": 255,
               "column": 10
             },
             "end": {
-              "line": 257,
+              "line": 258,
               "column": 11
             }
           },
@@ -103,11 +103,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 261,
+              "line": 262,
               "column": 10
             },
             "end": {
-              "line": 264,
+              "line": 265,
               "column": 11
             }
           },
@@ -116,7 +116,7 @@
               "attributeType": "String"
             }
           },
-          "defaultValue": "\"icons:cloud-upload\""
+          "defaultValue": "\"../resources/drop.svg\""
         },
         {
           "name": "avatarAcceptedFileTypes",
@@ -125,11 +125,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 268,
+              "line": 269,
               "column": 10
             },
             "end": {
-              "line": 271,
+              "line": 272,
               "column": 11
             }
           },
@@ -147,11 +147,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 275,
+              "line": 276,
               "column": 10
             },
             "end": {
-              "line": 278,
+              "line": 279,
               "column": 11
             }
           },
@@ -169,11 +169,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 282,
+              "line": 283,
               "column": 10
             },
             "end": {
-              "line": 285,
+              "line": 286,
               "column": 11
             }
           },
@@ -191,11 +191,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 289,
+              "line": 290,
               "column": 10
             },
             "end": {
-              "line": 292,
+              "line": 293,
               "column": 11
             }
           },
@@ -214,11 +214,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 296,
+              "line": 297,
               "column": 6
             },
             "end": {
-              "line": 316,
+              "line": 317,
               "column": 7
             }
           },
@@ -234,11 +234,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 323,
+              "line": 324,
               "column": 6
             },
             "end": {
-              "line": 329,
+              "line": 330,
               "column": 7
             }
           },
@@ -254,11 +254,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 337,
+              "line": 338,
               "column": 6
             },
             "end": {
-              "line": 344,
+              "line": 345,
               "column": 7
             }
           },
@@ -274,11 +274,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 351,
+              "line": 352,
               "column": 6
             },
             "end": {
-              "line": 361,
+              "line": 362,
               "column": 7
             }
           },
@@ -300,11 +300,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 369,
+              "line": 370,
               "column": 6
             },
             "end": {
-              "line": 371,
+              "line": 372,
               "column": 7
             }
           },
@@ -327,16 +327,22 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 376,
+              "line": 379,
               "column": 6
             },
             "end": {
-              "line": 378,
+              "line": 385,
               "column": 7
             }
           },
           "metadata": {},
-          "params": [],
+          "params": [
+            {
+              "name": "evt",
+              "type": "Object",
+              "description": "Event data."
+            }
+          ],
           "return": {
             "type": "void"
           }
@@ -347,16 +353,22 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 383,
+              "line": 392,
               "column": 6
             },
             "end": {
-              "line": 387,
+              "line": 400,
               "column": 7
             }
           },
           "metadata": {},
-          "params": [],
+          "params": [
+            {
+              "name": "evt",
+              "type": "Object",
+              "description": "Event data."
+            }
+          ],
           "return": {
             "type": "void"
           }
@@ -367,11 +379,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 392,
+              "line": 405,
               "column": 6
             },
             "end": {
-              "line": 399,
+              "line": 412,
               "column": 7
             }
           },
@@ -387,11 +399,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 406,
+              "line": 419,
               "column": 6
             },
             "end": {
-              "line": 410,
+              "line": 423,
               "column": 7
             }
           },
@@ -413,11 +425,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 417,
+              "line": 430,
               "column": 6
             },
             "end": {
-              "line": 420,
+              "line": 433,
               "column": 7
             }
           },
@@ -439,11 +451,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 427,
+              "line": 440,
               "column": 6
             },
             "end": {
-              "line": 452,
+              "line": 465,
               "column": 7
             }
           },
@@ -465,11 +477,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 460,
+              "line": 473,
               "column": 6
             },
             "end": {
-              "line": 492,
+              "line": 505,
               "column": 7
             }
           },
@@ -496,11 +508,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 223,
+          "line": 224,
           "column": 4
         },
         "end": {
-          "line": 494,
+          "line": 507,
           "column": 5
         }
       },
@@ -513,11 +525,11 @@
           "description": "Avatar footer label.",
           "sourceRange": {
             "start": {
-              "line": 238,
+              "line": 239,
               "column": 10
             },
             "end": {
-              "line": 241,
+              "line": 242,
               "column": 11
             }
           },
@@ -529,11 +541,11 @@
           "description": "Avatar image content (base64).",
           "sourceRange": {
             "start": {
-              "line": 245,
+              "line": 246,
               "column": 10
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 11
             }
           },
@@ -545,11 +557,11 @@
           "description": "Avatar alt image info.",
           "sourceRange": {
             "start": {
-              "line": 254,
+              "line": 255,
               "column": 10
             },
             "end": {
-              "line": 257,
+              "line": 258,
               "column": 11
             }
           },
@@ -561,11 +573,11 @@
           "description": "Avatar icon within the drop area.",
           "sourceRange": {
             "start": {
-              "line": 261,
+              "line": 262,
               "column": 10
             },
             "end": {
-              "line": 264,
+              "line": 265,
               "column": 11
             }
           },
@@ -577,11 +589,11 @@
           "description": "Avatar string list of accepted file types.",
           "sourceRange": {
             "start": {
-              "line": 268,
+              "line": 269,
               "column": 10
             },
             "end": {
-              "line": 271,
+              "line": 272,
               "column": 11
             }
           },
@@ -593,11 +605,11 @@
           "description": "Avatar plus icon within the footer area.",
           "sourceRange": {
             "start": {
-              "line": 275,
+              "line": 276,
               "column": 10
             },
             "end": {
-              "line": 278,
+              "line": 279,
               "column": 11
             }
           },
@@ -609,11 +621,11 @@
           "description": "Avatar remove icon within the footer area.",
           "sourceRange": {
             "start": {
-              "line": 282,
+              "line": 283,
               "column": 10
             },
             "end": {
-              "line": 285,
+              "line": 286,
               "column": 11
             }
           },
@@ -625,11 +637,11 @@
           "description": "Avatar max file size.",
           "sourceRange": {
             "start": {
-              "line": 289,
+              "line": 290,
               "column": 10
             },
             "end": {
-              "line": 292,
+              "line": 293,
               "column": 11
             }
           },
@@ -686,11 +698,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 223,
+          "line": 224,
           "column": 37
         },
         "end": {
-          "line": 223,
+          "line": 224,
           "column": 70
         }
       },
