@@ -28,6 +28,10 @@ Custom property | Description | Default
 `--swc-avatar-uploader-avatar-wrapper-avatar-foot-span` | Mixin applied to the label of the footer | {}
 `--swc-avatar-uploader-avatar-wrapper-avatar-foot-icon` | Mixin applied to the icon of the footer | {}
 `--swc-avatar-uploader-avatar-footer-bgcolor` | Var applied to set avatar footer background color | #EEEEEE
+`--swc-avatar-uploader-avatar-wrapper-avatar-action-focus` | Mixin applied to the focus of the main button and drop area | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-action-focus-ba` | Mixin applied to the befero/after focus styles of the main button and drop area | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-foot-hover` | Mixin applied to the focus of the main button and drop area | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-foot-focus` | Mixin applied to the focus of the main button and drop area | {}
 -->
 
 <dom-module id="swc-avatar-uploader">
@@ -35,14 +39,6 @@ Custom property | Description | Default
     <style>
       :host {
         display: block;
-      }
-
-      #avatar-action:focus,
-      .avatar-foot:focus {
-        outline-style: none;
-        box-shadow: none;
-        border: 3px solid var(--swc-avatar-uploader-avatar-focus-bordercolor, #3D7389);
-        transition: border .1s ease-in-out;
       }
 
       #avatar-wrapper {
@@ -73,7 +69,9 @@ Custom property | Description | Default
       }
 
       #avatar-action,
-      #avatar-action div {
+      #avatar-action div,
+      #avatar-action::before,
+      #avatar-action::after {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -81,10 +79,46 @@ Custom property | Description | Default
         right: 0;
       }
 
+      #avatar-action:focus,
+      .avatar-foot:focus {
+        outline-style: none;
+        box-shadow: none;
+        border: transparent;
+
+        @apply --swc-avatar-uploader-avatar-wrapper-avatar-action-focus;
+      }
+
+      #avatar-action::before,
+      #avatar-action::after {
+        box-sizing: inherit;
+        content: '';
+        transform-origin: center;
+      }
+
+      #avatar-action::before {
+        border-top: 3px solid var(--swc-avatar-uploader-avatar-focus-bordercolor, #3D7389);
+        border-bottom: 3px solid var(--swc-avatar-uploader-avatar-focus-bordercolor, #3D7389);
+        transform: scale3d(0, 1, 1);
+      }
+
+      #avatar-action::after {
+        border-left: 3px solid var(--swc-avatar-uploader-avatar-focus-bordercolor, #3D7389);
+        border-right: 3px solid var(--swc-avatar-uploader-avatar-focus-bordercolor, #3D7389);
+        transform: scale3d(1, 0, 1);
+      }
+
+      #avatar-action:focus::before,
+      #avatar-action:focus::after {
+        transform: scale3d(1, 1, 1);
+        transition: transform .25s;
+
+        @apply --swc-avatar-uploader-avatar-wrapper-avatar-action-focus-ba;
+      }
+
       #avatar-action div {
         background-color: #9e9e9e;
         color: #FFF;
-        transition: .2s ease-in-out;
+        transition: transform .2s;
         opacity: 0;
         display: flex;
         justify-content: center;
@@ -95,8 +129,8 @@ Custom property | Description | Default
 
       #avatar-action:hover div,
       #avatar-action.dropped div {
-        transform: scaleX(.94) scaleY(.94);
-        opacity: .15;
+        transform: scaleX(.92) scaleY(.94);
+        opacity: .2;
 
         @apply --swc-avatar-uploader-avatar-wrapper-avatar-action-hover;
       }
@@ -110,7 +144,6 @@ Custom property | Description | Default
       .avatar-foot {
         background-color: transparent;
         box-sizing: border-box;
-        border: 3px solid transparent;
         padding: 10px;
         font-size: 20px;
         display: flex;
@@ -121,10 +154,21 @@ Custom property | Description | Default
         @apply --swc-avatar-uploader-avatar-wrapper-avatar-foot;
       }
 
-
       .avatar-foot.avatar-foot-to-top {
         cursor: pointer;
         z-index: 1;
+      }
+
+      .avatar-foot.avatar-foot-to-top:hover {
+        background-color: rgba(0, 0, 0, .12);
+
+        @apply --swc-avatar-uploader-avatar-wrapper-avatar-foot-hover;
+      }
+
+      .avatar-foot:focus {
+        background-color: rgba(0, 0, 0, .12);
+
+        @apply --swc-avatar-uploader-avatar-wrapper-avatar-foot-focus;
       }
 
       .avatar-foot span {

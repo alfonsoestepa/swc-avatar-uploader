@@ -23,6 +23,10 @@ Custom property | Description | Default
 `--swc-avatar-uploader-avatar-wrapper-avatar-foot-span` | Mixin applied to the label of the footer | {}
 `--swc-avatar-uploader-avatar-wrapper-avatar-foot-icon` | Mixin applied to the icon of the footer | {}
 `--swc-avatar-uploader-avatar-footer-bgcolor` | Var applied to set avatar footer background color | #EEEEEE
+`--swc-avatar-uploader-avatar-wrapper-avatar-action-focus` | Mixin applied to the focus of the main button and drop area | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-action-focus-ba` | Mixin applied to the befero/after focus styles of the main button and drop area | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-foot-hover` | Mixin applied to the focus of the main button and drop area | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-foot-focus` | Mixin applied to the focus of the main button and drop area | {}
 
 ### Install dependencies
 
