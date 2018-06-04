@@ -10,7 +10,7 @@
     "serve": "polymer serve -o",
     "test": "polymer test --skip-selenium-install",
     "clean:deps": "rm -rf node_modules && rm -rf bower_components",
-    "analyze": "polymer analyze > analysis.json",
+    "analyze": "polymer analyze swc-avatar-uploader.html > analysis.json",
     "poly-lint": "polylint -i swc-avatar-uploader.html --no-recursion",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html",
