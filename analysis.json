@@ -13,11 +13,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 259,
+              "line": 260,
               "column": 10
             },
             "end": {
-              "line": 262,
+              "line": 263,
               "column": 11
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 266,
+              "line": 267,
               "column": 10
             },
             "end": {
-              "line": 269,
+              "line": 270,
               "column": 11
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 273,
+              "line": 274,
               "column": 10
             },
             "end": {
-              "line": 278,
+              "line": 279,
               "column": 11
             }
           },
@@ -81,11 +81,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 282,
+              "line": 283,
               "column": 10
             },
             "end": {
-              "line": 285,
+              "line": 286,
               "column": 11
             }
           },
@@ -103,11 +103,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 289,
+              "line": 290,
               "column": 10
             },
             "end": {
-              "line": 292,
+              "line": 293,
               "column": 11
             }
           },
@@ -125,11 +125,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 296,
+              "line": 297,
               "column": 10
             },
             "end": {
-              "line": 299,
+              "line": 300,
               "column": 11
             }
           },
@@ -147,11 +147,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 303,
+              "line": 304,
               "column": 10
             },
             "end": {
-              "line": 306,
+              "line": 307,
               "column": 11
             }
           },
@@ -169,11 +169,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 310,
+              "line": 311,
               "column": 10
             },
             "end": {
-              "line": 313,
+              "line": 314,
               "column": 11
             }
           },
@@ -191,11 +191,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 317,
+              "line": 318,
               "column": 10
             },
             "end": {
-              "line": 320,
+              "line": 321,
               "column": 11
             }
           },
@@ -213,11 +213,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 324,
+              "line": 325,
               "column": 10
             },
             "end": {
-              "line": 327,
+              "line": 328,
               "column": 11
             }
           },
@@ -235,11 +235,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 331,
+              "line": 332,
               "column": 10
             },
             "end": {
-              "line": 334,
+              "line": 335,
               "column": 11
             }
           },
@@ -257,11 +257,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 338,
+              "line": 339,
               "column": 10
             },
             "end": {
-              "line": 341,
+              "line": 342,
               "column": 11
             }
           },
@@ -280,11 +280,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 345,
+              "line": 346,
               "column": 6
             },
             "end": {
-              "line": 366,
+              "line": 367,
               "column": 7
             }
           },
@@ -300,11 +300,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 373,
+              "line": 374,
               "column": 6
             },
             "end": {
-              "line": 379,
+              "line": 380,
               "column": 7
             }
           },
@@ -320,11 +320,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 387,
+              "line": 388,
               "column": 6
             },
             "end": {
-              "line": 394,
+              "line": 395,
               "column": 7
             }
           },
@@ -340,11 +340,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 401,
+              "line": 402,
               "column": 6
             },
             "end": {
-              "line": 412,
+              "line": 413,
               "column": 7
             }
           },
@@ -366,11 +366,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 420,
+              "line": 421,
               "column": 6
             },
             "end": {
-              "line": 422,
+              "line": 423,
               "column": 7
             }
           },
@@ -393,11 +393,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 429,
+              "line": 430,
               "column": 6
             },
             "end": {
-              "line": 435,
+              "line": 436,
               "column": 7
             }
           },
@@ -419,11 +419,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 442,
+              "line": 443,
               "column": 6
             },
             "end": {
-              "line": 450,
+              "line": 451,
               "column": 7
             }
           },
@@ -445,11 +445,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 455,
+              "line": 456,
               "column": 6
             },
             "end": {
-              "line": 462,
+              "line": 463,
               "column": 7
             }
           },
@@ -465,11 +465,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 469,
+              "line": 470,
               "column": 6
             },
             "end": {
-              "line": 473,
+              "line": 474,
               "column": 7
             }
           },
@@ -491,11 +491,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 480,
+              "line": 481,
               "column": 6
             },
             "end": {
-              "line": 483,
+              "line": 484,
               "column": 7
             }
           },
@@ -517,11 +517,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 490,
+              "line": 491,
               "column": 6
             },
             "end": {
-              "line": 515,
+              "line": 516,
               "column": 7
             }
           },
@@ -543,7 +543,7 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 523,
+              "line": 524,
               "column": 6
             },
             "end": {
@@ -600,7 +600,7 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 251,
+          "line": 252,
           "column": 4
         },
         "end": {
@@ -617,11 +617,11 @@
           "description": "Avatar footer label.",
           "sourceRange": {
             "start": {
-              "line": 266,
+              "line": 267,
               "column": 10
             },
             "end": {
-              "line": 269,
+              "line": 270,
               "column": 11
             }
           },
@@ -633,11 +633,11 @@
           "description": "Avatar image content (base64).",
           "sourceRange": {
             "start": {
-              "line": 273,
+              "line": 274,
               "column": 10
             },
             "end": {
-              "line": 278,
+              "line": 279,
               "column": 11
             }
           },
@@ -649,11 +649,11 @@
           "description": "Avatar alt image info.",
           "sourceRange": {
             "start": {
-              "line": 282,
+              "line": 283,
               "column": 10
             },
             "end": {
-              "line": 285,
+              "line": 286,
               "column": 11
             }
           },
@@ -665,11 +665,11 @@
           "description": "Avatar icon within the drop area.",
           "sourceRange": {
             "start": {
-              "line": 289,
+              "line": 290,
               "column": 10
             },
             "end": {
-              "line": 292,
+              "line": 293,
               "column": 11
             }
           },
@@ -681,11 +681,11 @@
           "description": "Avatar string list of accepted file types.",
           "sourceRange": {
             "start": {
-              "line": 296,
+              "line": 297,
               "column": 10
             },
             "end": {
-              "line": 299,
+              "line": 300,
               "column": 11
             }
           },
@@ -697,11 +697,11 @@
           "description": "Avatar plus icon within the footer area.",
           "sourceRange": {
             "start": {
-              "line": 303,
+              "line": 304,
               "column": 10
             },
             "end": {
-              "line": 306,
+              "line": 307,
               "column": 11
             }
           },
@@ -713,11 +713,11 @@
           "description": "Avatar remove icon within the footer area.",
           "sourceRange": {
             "start": {
-              "line": 310,
+              "line": 311,
               "column": 10
             },
             "end": {
-              "line": 313,
+              "line": 314,
               "column": 11
             }
           },
@@ -729,11 +729,11 @@
           "description": "Avatar max file size.",
           "sourceRange": {
             "start": {
-              "line": 317,
+              "line": 318,
               "column": 10
             },
             "end": {
-              "line": 320,
+              "line": 321,
               "column": 11
             }
           },
@@ -745,11 +745,11 @@
           "description": "Avatar Only one file error message.",
           "sourceRange": {
             "start": {
-              "line": 324,
+              "line": 325,
               "column": 10
             },
             "end": {
-              "line": 327,
+              "line": 328,
               "column": 11
             }
           },
@@ -761,11 +761,11 @@
           "description": "Avatar Only one file error message.",
           "sourceRange": {
             "start": {
-              "line": 331,
+              "line": 332,
               "column": 10
             },
             "end": {
-              "line": 334,
+              "line": 335,
               "column": 11
             }
           },
@@ -777,11 +777,11 @@
           "description": "Avatar Reading error message.",
           "sourceRange": {
             "start": {
-              "line": 338,
+              "line": 339,
               "column": 10
             },
             "end": {
-              "line": 341,
+              "line": 342,
               "column": 11
             }
           },
@@ -838,11 +838,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 251,
+          "line": 252,
           "column": 37
         },
         "end": {
-          "line": 251,
+          "line": 252,
           "column": 70
         }
       },

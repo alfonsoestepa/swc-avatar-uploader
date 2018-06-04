@@ -2,6 +2,7 @@
 <link rel="import" href="../iron-image/iron-image.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 
+
 <!--
 ### Element swc-avatar-uploader
 
@@ -229,7 +230,7 @@ Custom property | Description | Default
       <div id="avatar-action" on-click="_includeAvatar"
         on-keypress="_includeAvatar" tabindex="0">
         <div>
-          <iron-icon src="[[avatarDropIcon]]"></iron-icon>
+          <iron-icon id="dropIcon" src="[[avatarDropIcon]]"></iron-icon>
         </div>
       </div>
 
@@ -424,7 +425,7 @@ Custom property | Description | Default
 
       /**
       * Fired when `avatar-action` is clicked.
-      * 
+      *
       * @param {Object} evt Event data.
       */
       _includeAvatar(evt) {
@@ -544,7 +545,6 @@ Custom property | Description | Default
         };
         reader.onerror = () => {
           this._showErrorMsg(this.avatarFileReadingError);
-
           this._imageError();
         };
         reader.readAsDataURL(files[0]);
