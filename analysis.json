@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "### Element swc-avatar-uploader\n\nA basic component to upload and show an avatar image\n\n```html\n  <swc-avatar-uploader id=\"avatar\" avatar-label=\"Photo\"\n    avatar-image-alt=\"Photo\"></swc-avatar-uploader>\n```\n\n### Styling\n\n`<swc-avatar-uploader>` provides the following custom properties and mixins for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--swc-avatar-uploader-avatar-wrapper-bgcolor` | Var applied to set avatar background color | #FFFFFF\n`--swc-avatar-uploader-avatar-wrapper-bshadow` | Var applied to set avatar box-shadow | {0 0 1px 0 rgba(0, 0, 0, .08), 0 1px 2px 0 rgba(0, 0, 0, .15)}\n`--swc-avatar-uploader-avatar-focus-bordercolor` | Var applied to set avatar focus border color | #3D7389 \n`--swc-avatar-uploader-avatar-wrapper-avatar-action` | Mixin applied to the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-hover` | Mixin applied to the hover state of the main button and dropping zone | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-icon` | Mixin applied to the icon within the main button and dropping zone | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot` | Mixin applied to the footer | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-label` | Mixin applied to the label of the footer | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-icon` | Mixin applied to the icon of the footer | {}\n`--swc-avatar-uploader-avatar-footer-bgcolor` | Var applied to set avatar footer background color | #EEEEEE\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-focus` | Mixin applied to the focus of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-focus-ba` | Mixin applied to the befero/after focus styles of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-hover` | Mixin applied to the focus of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-focus` | Mixin applied to the focus of the main button and drop area | {}\n\n`swc-avatar-uploader`\nA component to upload and show an avatar image",
+      "description": "### Element swc-avatar-uploader\n\nA basic component to upload and show an avatar image\n\n```html\n  <swc-avatar-uploader id=\"avatar\" avatar-label=\"Photo\"\n    avatar-image-alt=\"Photo\"></swc-avatar-uploader>\n```\n\n### Styling\n\n`<swc-avatar-uploader>` provides the following custom properties and mixins for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--swc-avatar-uploader-avatar-wrapper-bgcolor` | Var applied to set avatar background color | #FFFFFF\n`--swc-avatar-uploader-avatar-wrapper-bshadow` | Var applied to set avatar box-shadow | {0 0 1px 0 rgba(0, 0, 0, .08), 0 1px 2px 0 rgba(0, 0, 0, .15)}\n`--swc-avatar-uploader-avatar-focus-bordercolor` | Var applied to set avatar focus border color | #3D7389 \n`--swc-avatar-uploader-avatar-wrapper-avatar-action` | Mixin applied to the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-hover` | Mixin applied to the hover state of the main button and dropping zone | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-icon` | Mixin applied to the icon within the main button and dropping zone | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot` | Mixin applied to the footer | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-label` | Mixin applied to the label of the footer | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-icon` | Mixin applied to the icon of the footer | {}\n`--swc-avatar-uploader-avatar-footer-bgcolor` | Var applied to set avatar footer background color | #EEEEEE\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-focus` | Mixin applied to the focus of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-action-focus-ba` | Mixin applied to the befero/after focus styles of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-hover` | Mixin applied to the hover of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-avatar-foot-focus` | Mixin applied to the focus of the main button and drop area | {}\n`--swc-avatar-uploader-avatar-wrapper-error-msg` | Mixin applied to the error message | {}\n\n`swc-avatar-uploader`\nA component to upload and show an avatar image",
       "summary": "",
       "path": "swc-avatar-uploader.html",
       "properties": [
@@ -13,11 +13,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 232,
+              "line": 259,
               "column": 10
             },
             "end": {
-              "line": 235,
+              "line": 262,
               "column": 11
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 266,
               "column": 10
             },
             "end": {
-              "line": 242,
+              "line": 269,
               "column": 11
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 246,
+              "line": 273,
               "column": 10
             },
             "end": {
-              "line": 251,
+              "line": 278,
               "column": 11
             }
           },
@@ -81,11 +81,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 255,
+              "line": 282,
               "column": 10
             },
             "end": {
-              "line": 258,
+              "line": 285,
               "column": 11
             }
           },
@@ -103,11 +103,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 262,
+              "line": 289,
               "column": 10
             },
             "end": {
-              "line": 265,
+              "line": 292,
               "column": 11
             }
           },
@@ -125,11 +125,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 269,
+              "line": 296,
               "column": 10
             },
             "end": {
-              "line": 272,
+              "line": 299,
               "column": 11
             }
           },
@@ -147,11 +147,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 276,
+              "line": 303,
               "column": 10
             },
             "end": {
-              "line": 279,
+              "line": 306,
               "column": 11
             }
           },
@@ -169,11 +169,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 283,
+              "line": 310,
               "column": 10
             },
             "end": {
-              "line": 286,
+              "line": 313,
               "column": 11
             }
           },
@@ -191,11 +191,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 290,
+              "line": 317,
               "column": 10
             },
             "end": {
-              "line": 293,
+              "line": 320,
               "column": 11
             }
           },
@@ -205,6 +205,72 @@
             }
           },
           "defaultValue": "2097152"
+        },
+        {
+          "name": "avatarOneFileError",
+          "type": "string | null | undefined",
+          "description": "Avatar Only one file error message.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 324,
+              "column": 10
+            },
+            "end": {
+              "line": 327,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"Only 1 file\""
+        },
+        {
+          "name": "avatarTypeError",
+          "type": "string | null | undefined",
+          "description": "Avatar Only one file error message.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 331,
+              "column": 10
+            },
+            "end": {
+              "line": 334,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"Wrong type\""
+        },
+        {
+          "name": "avatarFileReadingError",
+          "type": "string | null | undefined",
+          "description": "Avatar Reading error message.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 338,
+              "column": 10
+            },
+            "end": {
+              "line": 341,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"Error reading file\""
         }
       ],
       "methods": [
@@ -214,11 +280,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 297,
+              "line": 345,
               "column": 6
             },
             "end": {
-              "line": 317,
+              "line": 366,
               "column": 7
             }
           },
@@ -234,11 +300,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 324,
+              "line": 373,
               "column": 6
             },
             "end": {
-              "line": 330,
+              "line": 379,
               "column": 7
             }
           },
@@ -254,11 +320,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 338,
+              "line": 387,
               "column": 6
             },
             "end": {
-              "line": 345,
+              "line": 394,
               "column": 7
             }
           },
@@ -274,11 +340,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 352,
+              "line": 401,
               "column": 6
             },
             "end": {
-              "line": 362,
+              "line": 412,
               "column": 7
             }
           },
@@ -300,11 +366,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 370,
+              "line": 420,
               "column": 6
             },
             "end": {
-              "line": 372,
+              "line": 422,
               "column": 7
             }
           },
@@ -327,11 +393,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 379,
+              "line": 429,
               "column": 6
             },
             "end": {
-              "line": 385,
+              "line": 435,
               "column": 7
             }
           },
@@ -353,11 +419,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 392,
+              "line": 442,
               "column": 6
             },
             "end": {
-              "line": 400,
+              "line": 450,
               "column": 7
             }
           },
@@ -379,11 +445,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 405,
+              "line": 455,
               "column": 6
             },
             "end": {
-              "line": 412,
+              "line": 462,
               "column": 7
             }
           },
@@ -399,11 +465,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 419,
+              "line": 469,
               "column": 6
             },
             "end": {
-              "line": 423,
+              "line": 473,
               "column": 7
             }
           },
@@ -425,11 +491,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 430,
+              "line": 480,
               "column": 6
             },
             "end": {
-              "line": 433,
+              "line": 483,
               "column": 7
             }
           },
@@ -451,11 +517,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 440,
+              "line": 490,
               "column": 6
             },
             "end": {
-              "line": 465,
+              "line": 515,
               "column": 7
             }
           },
@@ -477,11 +543,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 473,
+              "line": 523,
               "column": 6
             },
             "end": {
-              "line": 505,
+              "line": 550,
               "column": 7
             }
           },
@@ -491,6 +557,32 @@
               "name": "files",
               "type": "Array",
               "description": "List of files."
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_showErrorMsg",
+          "description": "Show error message.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 557,
+              "column": 6
+            },
+            "end": {
+              "line": 567,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "msg",
+              "type": "String",
+              "description": "Error msg."
             }
           ],
           "return": {
@@ -508,11 +600,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 224,
+          "line": 251,
           "column": 4
         },
         "end": {
-          "line": 507,
+          "line": 568,
           "column": 5
         }
       },
@@ -525,11 +617,11 @@
           "description": "Avatar footer label.",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 266,
               "column": 10
             },
             "end": {
-              "line": 242,
+              "line": 269,
               "column": 11
             }
           },
@@ -541,11 +633,11 @@
           "description": "Avatar image content (base64).",
           "sourceRange": {
             "start": {
-              "line": 246,
+              "line": 273,
               "column": 10
             },
             "end": {
-              "line": 251,
+              "line": 278,
               "column": 11
             }
           },
@@ -557,11 +649,11 @@
           "description": "Avatar alt image info.",
           "sourceRange": {
             "start": {
-              "line": 255,
+              "line": 282,
               "column": 10
             },
             "end": {
-              "line": 258,
+              "line": 285,
               "column": 11
             }
           },
@@ -573,11 +665,11 @@
           "description": "Avatar icon within the drop area.",
           "sourceRange": {
             "start": {
-              "line": 262,
+              "line": 289,
               "column": 10
             },
             "end": {
-              "line": 265,
+              "line": 292,
               "column": 11
             }
           },
@@ -589,11 +681,11 @@
           "description": "Avatar string list of accepted file types.",
           "sourceRange": {
             "start": {
-              "line": 269,
+              "line": 296,
               "column": 10
             },
             "end": {
-              "line": 272,
+              "line": 299,
               "column": 11
             }
           },
@@ -605,11 +697,11 @@
           "description": "Avatar plus icon within the footer area.",
           "sourceRange": {
             "start": {
-              "line": 276,
+              "line": 303,
               "column": 10
             },
             "end": {
-              "line": 279,
+              "line": 306,
               "column": 11
             }
           },
@@ -621,11 +713,11 @@
           "description": "Avatar remove icon within the footer area.",
           "sourceRange": {
             "start": {
-              "line": 283,
+              "line": 310,
               "column": 10
             },
             "end": {
-              "line": 286,
+              "line": 313,
               "column": 11
             }
           },
@@ -637,16 +729,64 @@
           "description": "Avatar max file size.",
           "sourceRange": {
             "start": {
-              "line": 290,
+              "line": 317,
               "column": 10
             },
             "end": {
-              "line": 293,
+              "line": 320,
               "column": 11
             }
           },
           "metadata": {},
           "type": "number | null | undefined"
+        },
+        {
+          "name": "avatar-one-file-error",
+          "description": "Avatar Only one file error message.",
+          "sourceRange": {
+            "start": {
+              "line": 324,
+              "column": 10
+            },
+            "end": {
+              "line": 327,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "avatar-type-error",
+          "description": "Avatar Only one file error message.",
+          "sourceRange": {
+            "start": {
+              "line": 331,
+              "column": 10
+            },
+            "end": {
+              "line": 334,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "avatar-file-reading-error",
+          "description": "Avatar Reading error message.",
+          "sourceRange": {
+            "start": {
+              "line": 338,
+              "column": 10
+            },
+            "end": {
+              "line": 341,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
         }
       ],
       "events": [
@@ -698,11 +838,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 224,
+          "line": 251,
           "column": 37
         },
         "end": {
-          "line": 224,
+          "line": 251,
           "column": 70
         }
       },
