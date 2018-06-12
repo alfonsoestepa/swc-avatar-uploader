@@ -2,6 +2,7 @@
 <link rel="import" href="../iron-image/iron-image.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 
+
 <!--
 ### Element swc-avatar-uploader
 
@@ -30,8 +31,9 @@ Custom property | Description | Default
 `--swc-avatar-uploader-avatar-footer-bgcolor` | Var applied to set avatar footer background color | #EEEEEE
 `--swc-avatar-uploader-avatar-wrapper-avatar-action-focus` | Mixin applied to the focus of the main button and drop area | {}
 `--swc-avatar-uploader-avatar-wrapper-avatar-action-focus-ba` | Mixin applied to the befero/after focus styles of the main button and drop area | {}
-`--swc-avatar-uploader-avatar-wrapper-avatar-foot-hover` | Mixin applied to the focus of the main button and drop area | {}
+`--swc-avatar-uploader-avatar-wrapper-avatar-foot-hover` | Mixin applied to the hover of the main button and drop area | {}
 `--swc-avatar-uploader-avatar-wrapper-avatar-foot-focus` | Mixin applied to the focus of the main button and drop area | {}
+`--swc-avatar-uploader-avatar-wrapper-error-msg` | Mixin applied to the error message | {}
 -->
 
 <dom-module id="swc-avatar-uploader">
@@ -145,7 +147,7 @@ Custom property | Description | Default
         background-color: transparent;
         box-sizing: border-box;
         padding: 10px;
-        font-size: 20px;
+        font-size: 1.4em;
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
@@ -186,6 +188,29 @@ Custom property | Description | Default
       #file-input {
         display: none;
       }
+
+      #error-msg {
+        position: absolute;
+        box-sizing: border-box;
+        bottom: -20px;
+        padding: 4px;
+        font-size: .8em;
+        font-weight: bold;
+        color: #CA3B32;
+        text-align: right;
+        width: 100%;
+        transition: opacity .25s;
+
+        @apply --swc-avatar-uploader-avatar-wrapper-error-msg;
+      }
+
+      .error-msg-hide {
+        opacity: 0;
+      }
+
+      .error-msg-show {
+        opacity: 1;
+      }
     </style>
 
     <div id="avatar-wrapper">
@@ -205,8 +230,11 @@ Custom property | Description | Default
       <div id="avatar-action" on-click="_includeAvatar"
         on-keypress="_includeAvatar" tabindex="0">
         <div>
-          <iron-icon src="[[avatarDropIcon]]"></iron-icon>
+          <iron-icon id="dropIcon" src="[[avatarDropIcon]]"></iron-icon>
         </div>
+      </div>
+
+      <div id="error-msg" class="error-msg-hide">
       </div>
     </div>
 
@@ -291,6 +319,27 @@ Custom property | Description | Default
           avatarMaxFileSize: {
             type: Number,
             value: 2097152
+          },
+          /**
+          * Avatar Only one file error message.
+          */
+          avatarOneFileError: {
+            type: String,
+            value: 'Only 1 file'
+          },
+          /**
+           * Avatar Only one file error message.
+           */
+          avatarTypeError: {
+            type: String,
+            value: 'Wrong type'
+          },
+          /**
+           * Avatar Reading error message.
+           */
+          avatarFileReadingError: {
+            type: String,
+            value: 'Error reading file'
           }
         };
       }
@@ -298,12 +347,13 @@ Custom property | Description | Default
       ready() {
         super.ready();
 
-        this.shadowRoot.querySelector('#avatar-image').addEventListener('loaded-changed',
+        const image = this.shadowRoot.querySelector('#avatar-image');
+        image.addEventListener('loaded-changed',
           this._imageLoaded.bind(this), false);
-        this.shadowRoot.querySelector('#avatar-image').addEventListener('error-changed',
+        image.addEventListener('error-changed',
           this._imageError.bind(this), false);
 
-        var dropTarget = this.shadowRoot.querySelector('#avatar-action');
+        const dropTarget = this.shadowRoot.querySelector('#avatar-action');
         dropTarget.addEventListener('dragover', (evt) => {
           evt.preventDefault(); return false;
         }, false);
@@ -351,14 +401,15 @@ Custom property | Description | Default
       * @param {Boolean} val Value changed.
       */
       _avatarChanged(val) {
+        const el = this.shadowRoot.querySelector('.avatar-foot');
         if (val) {
           this._avatarLoaded = true;
-          this.shadowRoot.querySelector('.avatar-foot').setAttribute('tabindex', '0');
-          this.shadowRoot.querySelector('.avatar-foot').classList.add('avatar-foot-to-top');
+          el.setAttribute('tabindex', '0');
+          el.classList.add('avatar-foot-to-top');
         } else {
           this._avatarLoaded = false;
-          this.shadowRoot.querySelector('.avatar-foot').removeAttribute('tabindex');
-          this.shadowRoot.querySelector('.avatar-foot').classList.remove('avatar-foot-to-top');
+          el.removeAttribute('tabindex');
+          el.classList.remove('avatar-foot-to-top');
         }
       }
 
@@ -374,7 +425,7 @@ Custom property | Description | Default
 
       /**
       * Fired when `avatar-action` is clicked.
-      * 
+      *
       * @param {Object} evt Event data.
       */
       _includeAvatar(evt) {
@@ -450,7 +501,7 @@ Custom property | Description | Default
           }
 
           let itemsRlt = [];
-          for (var ii = 0; ii < items.length; ii++) {
+          for (let ii = 0; ii < items.length; ii++) {
             if (!items[ii].type.includes('image'))
               continue;
             const file = items[ii].getAsFile();
@@ -473,38 +524,48 @@ Custom property | Description | Default
         */
       _loadFile(files) {
         if (files.length > 1) {
+          this._showErrorMsg(this.avatarOneFileError);
           return;
-          // TODO:Show error
-          // console.log('cantidad archivos');
         }
         if (files[0].type.trim() === ''
           || !this.avatarAcceptedFileTypes.includes(files[0].type.trim())) {
+          this._showErrorMsg(this.avatarTypeError);
           return;
-          // TODO:Show error
-          // console.log('tipo incorrecto');
         }
         if (files[0].size > this.avatarMaxFileSize) {
+          this._showErrorMsg(`>${(this.avatarMaxFileSize / 1024 / 1024)}mb`);
           return;
-          // TODO:Show error
-          // console.log('tamaño superador');
         }
-
         this.dispatchEvent(new CustomEvent('load-init', {
           bubbles: true, composed: true
         }));
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.onload = (evt) => {
           this.avatarImage = evt.target.result;
         };
         reader.onerror = () => {
-          // TODO:Show error reading
-          // console.log('error al leer archivo');
-
+          this._showErrorMsg(this.avatarFileReadingError);
           this._imageError();
         };
         reader.readAsDataURL(files[0]);
       }
 
+      /**
+      * Show error message.
+        *
+        * @param {String} msg Error msg.
+        */
+      _showErrorMsg(msg) {
+        const el = this.shadowRoot.querySelector('#error-msg');
+        el.classList.remove('error-msg-hide');
+        el.classList.add('error-msg-show');
+        el.innerHTML = msg;
+        setTimeout(() => {
+          el.classList.add('error-msg-hide');
+          el.classList.remove('error-msg-show');
+          el.innerHTML = '';
+        }, 5000);
+      }
     }
 
     window.customElements.define(SwcAvatarUploader.is, SwcAvatarUploader);

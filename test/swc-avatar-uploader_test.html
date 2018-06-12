@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>swc-avatar-uploader test</title>
+
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <link rel="import" href="../swc-avatar-uploader.html">
+</head>
+
+<body>
+
+  <test-fixture id="BasicTestFixture">
+    <template>
+      <swc-avatar-uploader></swc-avatar-uploader>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="CustomValuesTestFixture">
+    <template>
+      <swc-avatar-uploader avatar-label="Photo"
+        avatar-image-alt="Photo alt" avatar-drop-icon="../resources/test.png"
+        avatar-accepted-file-types="image/jpeg"
+        avatar-add-icon="icons:check" avatar-remove-icon="icons:clear"
+        avatar-max-file-size="4000000" avatar-one-file-error="One file error"
+        avatar-type-error="Incorrect type"
+        avatar-file-reading-error="Error reading"></swc-avatar-uploader>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="WithImageTestFixture">
+    <template>
+      <swc-avatar-uploader></swc-avatar-uploader>
+    </template>
+  </test-fixture>
+
+  <script>
+    suite('swc-avatar-uploader', () => {
+
+      //Dependencies
+      test('Should have all required components', function(done) {
+        const component = fixture('BasicTestFixture');
+        flush(function() {
+          const ironImage = component.shadowRoot.querySelector('iron-image');
+          assert(ironImage, 'iron-image is neither `null` nor `undefined`');
+          assert(ironImage.shadowRoot, 'iron-image.html not imported');
+
+          const ironIcon = component.shadowRoot.querySelector('#icon');
+          assert(ironIcon, '#icon is neither `null` nor `undefined`');
+
+          const ironDropIcon = component.shadowRoot.querySelector('#dropIcon');
+          assert(ironDropIcon, '#dropIcon is neither `null` nor `undefined`');
+
+          const ironIconDep = component.shadowRoot.querySelector('iron-icon');
+          assert(ironIconDep.shadowRoot, 'iron-icon.html not imported');
+          done();
+        });
+      });
+
+      //Properties Types
+      test('Should have all properties the correct type', function() {
+        const component = fixture('BasicTestFixture');
+        assert.typeOf(component.avatarLabel, 'string');
+        assert.typeOf(component.avatarImage, 'string');
+        assert.typeOf(component.avatarImageAlt, 'string');
+        assert.typeOf(component.avatarDropIcon, 'string');
+        assert.typeOf(component.avatarAcceptedFileTypes, 'string');
+        assert.typeOf(component.avatarAddIcon, 'string');
+        assert.typeOf(component.avatarAddIcon, 'string');
+        assert.typeOf(component.avatarRemoveIcon, 'string');
+        assert.typeOf(component.avatarMaxFileSize, 'number');
+        assert.typeOf(component.avatarOneFileError, 'string');
+        assert.typeOf(component.avatarTypeError, 'string');
+      });
+
+      //Properties default values
+      test('Should all properties load default values', function() {
+        const component = fixture('BasicTestFixture');
+        assert.equal(component.avatarLabel, '');
+        assert.equal(component.avatarImage, '');
+        assert.equal(component.avatarImageAlt, '');
+        assert.equal(component.avatarDropIcon, '../resources/drop.svg');
+        assert.equal(component.avatarAcceptedFileTypes, 'image/gif,image/jpeg,image/png');
+        assert.equal(component.avatarAddIcon, 'icons:add');
+        assert.equal(component.avatarRemoveIcon, 'icons:close');
+        assert.equal(component.avatarMaxFileSize, 2097152);
+        assert.equal(component.avatarOneFileError, 'Only 1 file');
+        assert.equal(component.avatarTypeError, 'Wrong type');
+        assert.equal(component.avatarFileReadingError, 'Error reading file');
+      });
+
+      //Properties custom values
+      test('Should all properties load custom values', function() {
+        const component = fixture('CustomValuesTestFixture');
+        assert.equal(component.avatarLabel, 'Photo');
+        assert.equal(component.avatarImageAlt, 'Photo alt');
+        assert.equal(component.avatarDropIcon, '../resources/test.png');
+        assert.equal(component.avatarAcceptedFileTypes, 'image/jpeg');
+        assert.equal(component.avatarAddIcon, 'icons:check');
+        assert.equal(component.avatarRemoveIcon, 'icons:clear');
+        assert.equal(component.avatarMaxFileSize, 4000000);
+        assert.equal(component.avatarOneFileError, 'One file error');
+        assert.equal(component.avatarTypeError, 'Incorrect type');
+        assert.equal(component.avatarFileReadingError, 'Error reading');
+      });
+
+      //Functionality
+      test('Should load correctly image with custom base64 data', function(done) {
+        const component = fixture('WithImageTestFixture');
+        flush(function() {
+          component.avatarImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAB+FBMVEUAAAA/mUPidDHiLi5Cn0XkNTPmeUrkdUg/m0Q0pEfcpSbwaVdKskg+lUP4zA/iLi3msSHkOjVAmETdJSjtYFE/lkPnRj3sWUs8kkLeqCVIq0fxvhXqUkbVmSjwa1n1yBLepyX1xxP0xRXqUkboST9KukpHpUbuvRrzrhF/ljbwaljuZFM4jELaoSdLtElJrUj1xxP6zwzfqSU4i0HYnydMtUlIqUfywxb60AxZqEXaoifgMCXptR9MtklHpEY2iUHWnSjvvRr70QujkC+pUC/90glMuEnlOjVMt0j70QriLS1LtEnnRj3qUUXfIidOjsxAhcZFo0bjNDH0xxNLr0dIrUdmntVTkMoyfL8jcLBRuErhJyrgKyb4zA/5zg3tYFBBmUTmQTnhMinruBzvvhnxwxZ/st+Ktt5zp9hqota2vtK6y9FemNBblc9HiMiTtMbFtsM6gcPV2r6dwroseLrMrbQrdLGdyKoobKbo3Zh+ynrgVllZulTsXE3rV0pIqUf42UVUo0JyjEHoS0HmsiHRGR/lmRz/1hjqnxjvpRWfwtOhusaz0LRGf7FEfbDVmqHXlJeW0pbXq5bec3fX0nTnzmuJuWvhoFFhm0FtrziBsjaAaDCYWC+uSi6jQS3FsSfLJiTirCOkuCG1KiG+wSC+GBvgyhTszQ64Z77KAAAARXRSTlMAIQRDLyUgCwsE6ebm5ubg2dLR0byXl4FDQzU1NDEuLSUgC+vr6urq6ubb29vb2tra2tG8vLu7u7uXl5eXgYGBgYGBLiUALabIAAABsElEQVQoz12S9VPjQBxHt8VaOA6HE+AOzv1wd7pJk5I2adpCC7RUcHd3d3fXf5PvLkxheD++z+yb7GSRlwD/+Hj/APQCZWxM5M+goF+RMbHK594v+tPoiN1uHxkt+xzt9+R9wnRTZZQpXQ0T5uP1IQxToyOAZiQu5HEpjeA4SWIoksRxNiGC1tRZJ4LNxgHgnU5nJZBDvuDdl8lzQRBsQ+s9PZt7s7Pz8wsL39/DkIfZ4xlB2Gqsq62ta9oxVlVrNZpihFRpGO9fzQw1ms0NDWZz07iGkJmIFH8xxkc3a/WWlubmFkv9AB2SEpDvKxbjidN2faseaNV3zoHXvv7wMODJdkOHAegweAfFPx4G67KluxzottCU9n8CUqXzcIQdXOytAHqXxomvykhEKN9EFutG22p//0rbNvHVxiJywa8yS2KDfV1dfbu31H8jF1RHiTKtWYeHxUvq3bn0pyjCRaiRU6aDO+gb3aEfEeVNsDgm8zzLy9egPa7Qt8TSJdwhjplk06HH43ZNJ3s91KKCHQ5x4sw1fRGYDZ0n1L4FKb9/BP5JLYxToheoFCVxz57PPS8UhhEpLBVeAAAAAElFTkSuQmCC'
+          const ironImage = component.shadowRoot.querySelector('avatar-image');
+          component.addEventListener('load-completed', () => {
+            assert.equal(component._avatarLoaded, true);
+            done();
+          });
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
